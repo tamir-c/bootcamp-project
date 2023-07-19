@@ -1,6 +1,6 @@
-CREATE DATABASE skyTravel_DB;
+CREATE DATABASE sky_travel_db;
 
-USE skyTravel_DB;
+USE sky_travel_db;
 
 CREATE TABLE genre (
 	genre_id INT AUTO_INCREMENT PRIMARY KEY,

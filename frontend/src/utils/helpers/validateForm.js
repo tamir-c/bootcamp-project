@@ -3,7 +3,6 @@
 `Password must contain ${value}`
 I know if Object.values().length > 0 && ${value} */
 const validateForm = (values) => {
-  console.log("running", values);
   const { name, email, password } = values;
   // Create an errors obejct to store the errors. If there are any error occurs this object will look like this:
   /*
@@ -27,6 +26,8 @@ const validateForm = (values) => {
   // If there is no name, I decided to create an array even though it is only holding one value. The reason is that I want to keep the same structure for all the errors.
   if (!name) {
     errors.name = ["Name is required"];
+  } else {
+    errors.name = [];
   }
 
   // If there is email errors, create an array.
@@ -76,13 +77,5 @@ const isPassword = (value) => {
 
   return errors;
 };
-
-const testValues = {
-  name: "John Doe",
-  email: "john.doe@gmail.com",
-  password: "Password123@",
-};
-
-console.log(validateForm(testValues));
 
 export default validateForm;

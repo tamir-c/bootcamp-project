@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const useForm = (initialData) => {
-  // The hook needs to handle the boolean logic to show the errors. It will be used in the form component.
   const [formData, setFormData] = useState(initialData);
   const [warnings, setWarnings] = useState({});
 

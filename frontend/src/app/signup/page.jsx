@@ -10,7 +10,7 @@ when you want to use localStorage in your components
 some very particular cases for data fetching
 */
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";
@@ -23,6 +23,26 @@ import Image from "next/image";
 import sky from "../../../public/assets/sky.png";
 
 const page = () => {
+  const [movieData, setMovieData] = useState([]);
+  console.log(movieData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8082/movies");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setMovieData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   // Custom hook called with initial state values
   const {
     formData,

@@ -10,6 +10,7 @@ when you want to use localStorage in your components
 some very particular cases for data fetching
 */
 "use client";
+import { useState } from "react";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";
@@ -23,7 +24,13 @@ import sky from "../../../public/assets/sky.png";
 
 const page = () => {
   // Custom hook called with initial state values
-  const { formData, handleInputChange } = useForm({
+  const {
+    formData,
+    handleInputChange,
+    handleWarningOnFocus,
+    handleWarningOnBlur,
+    warnings,
+  } = useForm({
     name: "",
     password: "",
     email: "",
@@ -98,11 +105,14 @@ const page = () => {
                     type="text"
                     name="name"
                     value={name}
+                    onFocus={handleWarningOnFocus}
+                    onBlur={handleWarningOnBlur}
                     onChange={handleInputChange}
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     placeholder="name"
                   />
-                  {errors.name?.length > 0 && (
+
+                  {warnings.name && errors.name?.length > 0 && (
                     <small className="text-sm text-red-500">
                       {errors.name[0]}
                     </small>
@@ -111,11 +121,13 @@ const page = () => {
                     type="email"
                     name="email"
                     value={email}
+                    onFocus={handleWarningOnFocus}
+                    onBlur={handleWarningOnBlur}
                     onChange={handleInputChange}
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     placeholder="Email"
                   />
-                  {errors.email?.length > 0 && (
+                  {warnings.email && errors.email?.length > 0 && (
                     <small className="text-sm text-red-500">
                       {errors.email[0]}
                     </small>
@@ -124,11 +136,13 @@ const page = () => {
                     type="password"
                     name="password"
                     value={password}
+                    onFocus={handleWarningOnFocus}
+                    onBlur={handleWarningOnBlur}
                     onChange={handleInputChange}
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     placeholder="Password"
                   />
-                  {errors.password?.length > 0 && (
+                  {warnings.password && errors.password?.length > 0 && (
                     <small className="text-sm text-red-500">
                       {errors.password[0]}
                     </small>

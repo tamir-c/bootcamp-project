@@ -1,7 +1,23 @@
 import { useState } from "react";
 
 const useForm = (initialData) => {
+  // The hook needs to handle the boolean logic to show the errors. It will be used in the form component.
   const [formData, setFormData] = useState(initialData);
+  const [warnings, setWarnings] = useState({});
+
+  const handleWarningOnFocus = (event) => {
+    setWarnings((prevWarnings) => ({
+      ...prevWarnings,
+      [event.target.name]: true,
+    }));
+  };
+
+  const handleWarningOnBlur = (event) => {
+    setWarnings((prevWarnings) => ({
+      ...prevWarnings,
+      [event.target.name]: false,
+    }));
+  };
 
   const handleInputChange = (event) => {
     setFormData((prevFormData) => ({
@@ -13,6 +29,9 @@ const useForm = (initialData) => {
   return {
     formData,
     handleInputChange,
+    handleWarningOnFocus,
+    handleWarningOnBlur,
+    warnings,
   };
 };
 

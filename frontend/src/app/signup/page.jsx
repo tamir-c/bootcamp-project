@@ -24,7 +24,6 @@ import sky from "../../../public/assets/sky.png";
 
 const page = () => {
   const [movieData, setMovieData] = useState([]);
-  console.log(movieData);
 
   useEffect(() => {
     const fetchData = async () => {

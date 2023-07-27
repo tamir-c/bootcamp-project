@@ -19,12 +19,6 @@ import { Logo } from "@/components";
 import useForm from "@/utils/customHooks/useForm";
 import validateForm from "@/utils/helpers/validateForm";
 
-// Import: Elements
-import Image from "next/image";
-
-// Import: Assets
-import sky from "../../../public/assets/sky.png";
-
 const page = () => {
   const [movieData, setMovieData] = useState([]);
 

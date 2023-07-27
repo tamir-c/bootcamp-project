@@ -13,7 +13,13 @@ some very particular cases for data fetching
 import { useState, useEffect } from "react";
 
 // Import:
-import { Logo } from "@/components";
+import {
+  Logo,
+  SocialButton,
+  FormInput,
+  TermsOfService,
+  SignUpForm,
+} from "@/components";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";
@@ -53,8 +59,6 @@ const page = () => {
     password: "",
     email: "",
   });
-  // Destructure values from formData
-  const { name, password, email } = formData;
 
   // Validate form
   const errors = validateForm(formData);
@@ -64,7 +68,7 @@ const page = () => {
 
   return (
     <>
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+      <div className="bg-white shadow sm:rounded-lg flex justify-center flex-1 m-10">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <Logo />
           <div className="mt-12 flex flex-col items-center">
@@ -115,87 +119,15 @@ const page = () => {
                   Or sign up with e-mail
                 </div>
               </div>
-              <form>
-                <div className="mx-auto max-w-xs">
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type="text"
-                    placeholder="name"
-                    name="name"
-                    value={name}
-                    onFocus={handleWarningOnFocus}
-                    onBlur={handleWarningOnBlur}
-                    onChange={handleInputChange}
-                  />
-                  {warnings.name && errors.name?.length > 0 && (
-                    <small className="text-sm text-red-500">
-                      {errors.name[0]}
-                    </small>
-                  )}
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    value={email}
-                    onFocus={handleWarningOnFocus}
-                    onBlur={handleWarningOnBlur}
-                    onChange={handleInputChange}
-                  />
-                  {warnings.email && errors.email?.length > 0 && (
-                    <small className="text-sm text-red-500">
-                      {errors.email[0]}
-                    </small>
-                  )}
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onFocus={handleWarningOnFocus}
-                    onBlur={handleWarningOnBlur}
-                    onChange={handleInputChange}
-                  />
-                  {warnings.password && errors.password?.length > 0 && (
-                    <small className="text-sm text-red-500">
-                      {errors.password[0]}
-                    </small>
-                  )}
 
-                  <button className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                    <svg
-                      className="w-6 h-6 -ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                      <circle cx="8.5" cy="7" r="4" />
-                      <path d="M20 8v6M23 11h-6" />
-                    </svg>
-                    <span className="ml-3">Sign Up</span>
-                  </button>
-                  <p className="mt-6 text-xs text-gray-600 text-center">
-                    I agree to abide by Sky's&nbsp;
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Terms of Service&nbsp;
-                    </a>
-                    and its&nbsp;
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Privacy Policy
-                    </a>
-                  </p>
-                </div>
-              </form>
+              <SignUpForm
+                formData={formData}
+                handleInputChange={handleInputChange}
+                handleWarningOnFocus={handleWarningOnFocus}
+                handleWarningOnBlur={handleWarningOnBlur}
+                errors={errors}
+                warnings={warnings}
+              />
             </div>
           </div>
         </div>

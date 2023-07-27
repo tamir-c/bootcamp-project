@@ -1,4 +1,3 @@
-// components/Logo.js
 import Image from "next/image";
 import sky from "../../../public/assets/sky.png";
 

@@ -13,13 +13,7 @@ some very particular cases for data fetching
 import { useState, useEffect } from "react";
 
 // Import:
-import {
-  Logo,
-  SocialButton,
-  FormInput,
-  TermsOfService,
-  SignUpForm,
-} from "@/components";
+import { Logo, SignUpForm } from "@/components";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";

@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       {/* We will built up our components here */}
       <body className={inter.className}>
-        <h1>Hello, world</h1>
+        {/* <h1>Hello, world</h1> */}
         <main>{children}</main>
       </body>
     </html>

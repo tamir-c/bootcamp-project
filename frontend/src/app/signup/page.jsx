@@ -10,7 +10,6 @@ when you want to use localStorage in your components
 some very particular cases for data fetching
 */
 "use client";
-import { useState, useEffect } from "react";
 
 // Import:
 import { Logo, SignUpForm } from "@/components";

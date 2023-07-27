@@ -20,27 +20,6 @@ import useForm from "@/utils/customHooks/useForm";
 import validateForm from "@/utils/helpers/validateForm";
 
 const page = () => {
-  const [movieData, setMovieData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setMovieData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    // fetchData();
-  }, []);
-
   // Custom hook called with initial state values
   const {
     formData,

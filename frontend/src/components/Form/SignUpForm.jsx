@@ -1,4 +1,5 @@
-import { FormInput, TermsOfService } from "../../components";
+// Import: Components
+import { FormInput } from "../../components";
 
 const SignUpForm = ({
   formData,
@@ -7,24 +8,27 @@ const SignUpForm = ({
   handleWarningOnBlur,
   errors,
   warnings,
+  signup,
+  handleSubmit,
 }) => {
   const { name, email, password } = formData;
-  console.log("Here is the formData", formData);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mx-auto max-w-xs">
-        <FormInput
-          type="text"
-          placeholder="name"
-          name="name"
-          value={name}
-          onFocus={handleWarningOnFocus}
-          onBlur={handleWarningOnBlur}
-          onChange={handleInputChange}
-          errorMessage={errors.name?.length > 0 ? errors.name[0] : null}
-          warnings={warnings.name}
-        />
+        {signup && (
+          <FormInput
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={name}
+            onFocus={handleWarningOnFocus}
+            onBlur={handleWarningOnBlur}
+            onChange={handleInputChange}
+            errorMessage={errors.name?.length > 0 ? errors.name[0] : null}
+            warnings={warnings.name}
+          />
+        )}
 
         <FormInput
           type="email"
@@ -59,10 +63,8 @@ const SignUpForm = ({
             strokeLinecap="round"
             strokeLinejoin="round"
           ></svg>
-          <span className="ml-3">Sign Up</span>
+          <span className="ml-3">{signup ? "Sign up" : "Login"}</span>
         </button>
-
-        <TermsOfService />
       </div>
     </form>
   );

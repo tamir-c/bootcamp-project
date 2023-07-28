@@ -53,7 +53,7 @@ const page = () => {
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <Logo />
           <div className="mt-12 flex flex-col items-center">
-            <Header title="Log in to Sky Travel!" />
+            <Header title="Sign up in to Sky Travel!" />
             <div className="w-full flex-1 mt-8">
               <SocialButtons text />
 

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import sky from "../../../public/assets/sky.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -18,10 +19,10 @@ function Header() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <nav className="hidden md:flex items-center space-x-4">
-            <li><a>Home</a></li>
+            <li> <Link href="/">Home</Link></li>
             <li><a>Profile</a></li>
-            <li><a>Login</a></li>
-            <li><a>Signup</a></li>
+            <li><Link href="/login">Login</Link></li>
+            <li><Link href="/signup">Sign Up</Link></li>
           </nav>
 
           <nav className="md:hidden mt-0 md:mt-0">
@@ -48,10 +49,10 @@ function Header() {
               {showDropdown && (
                 <div className="absolute right-0 mt-2 z-[1] p-2 shadow bg-base-100 rounded-box w-52 max-h-40 overflow-y-auto">
                   <ul className="menu menu-sm dropdown-content">
-                    <li><a>Home</a></li>
-                    <li><a>Profile</a></li>
-                    <li><a>Login</a></li>
-                    <li><a>Signup</a></li>
+                  <li> <Link href="/">Home</Link></li>
+                 <li><a>Profile</a></li>
+                 <li><Link href="/login">Login</Link></li>
+                <li><Link href="/signup">Sign Up</Link></li>
                   </ul>
                 </div>
               )}

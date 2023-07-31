@@ -1,38 +1,81 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
 import axios from "axios";
+import MovieCard from "../../../components/Cards/MovieCard";
 
 const page = () => {
-    const BACKEND_URL = "http://127.0.0.1:8082";
-    // const BACKEND_URL = "http://18.170.108.208:8082";
-    const params = useParams();
-    const id = params.id;
-    console.log(id);
-    const [movie, setMovie] = useState();
+  const BACKEND_URL = "http://127.0.0.1:8082";
+  // const BACKEND_URL = "http://18.170.108.208:8082";
+  const params = useParams();
+  const id = params.id;
 
-    const getMovie = async () => {
-        const response = await axios.get(`${BACKEND_URL}/movies/${movieId}`);
-        const data = await response.data;
-        setMovie(data);
-    };
-
-    useEffect(() => {
-        getMovie();
-    }, []);
-
-    return (
-      <div>Movie {id}</div>
-    );
-};
-  
-  page.defaultProps = {
-    movieData: {
-      movie_name: "No title",
-      release_year: "No release year",
-      poster_url: "https://via.placeholder.com/400",
-      duration_minutes: 'No duration'
-    },
+  const movieData = {
+    movie_id: 1,
+    movie_name: "About Time",
+    description: "A young man discovers he can travel in time.",
+    poster_url:
+      "https://m.media-amazon.com/images/I/815Q1ufP6yL._AC_UF1000,1000_QL80_.jpg",
+    release_year: "2013",
+    director: "Richard Curtis",
+    duration_minutes: 123,
   };
-  
-  export default page;
+
+  return (
+    // <img
+    //   // style={{
+    //   //   objectFit: "cover",
+    //   //   width: "300px",
+    //   //   height: "300px",
+    //   // }}
+    //   src={movieData.poster_url}
+    //   alt={`${movieData.movie_name} movie poster`}
+    // />
+    <>
+      <div className="grid grid-cols-2 gap-4 m-8">
+        <div className="bg-red-500 rounded-lg shadow-xl row-span-2 h-600 min-h-[50px]">
+          <img
+            // style={{
+            //   objectFit: "cover",
+            //   width: "300px",
+            //   height: "300px",
+            // }}
+            src={movieData.poster_url}
+            alt={`${movieData.movie_name} movie poster`}
+            className="place-items-center h-auto max-w-full rounded-lg"
+          />
+        </div>
+        <div className="bg-blue-500 rounded-lg shadow-xl min-h-[50px] p-5 text-center place-items-center">
+          <p>Release date: 2013</p>
+          <p>Directed by: Richard Curtis</p>
+          <p>Genre: Romance</p>
+          <p>Duration</p>
+        </div>
+        <div className="bg-green-500 rounded-lg shadow-xl min-h-[50px] row-span-2">
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+        </div>
+        <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati
+            reiciendis ipsum voluptas, itaque, repellendus tempora fuga rem
+            dolorum quasi officia sit maxime corrupti nihil atque error
+            voluptates? Sit, accusantium nulla.
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+page.defaultProps = {
+  movieData: {
+    movie_name: "No title",
+    release_year: "No release year",
+    poster_url: "https://via.placeholder.com/400",
+    duration_minutes: "No duration",
+  },
+};
+
+export default page;

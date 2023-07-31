@@ -35,6 +35,12 @@ export default function Home() {
       ) : (
         <h1>No Movies Available</h1>
       )}
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
     </div>
   );
 }

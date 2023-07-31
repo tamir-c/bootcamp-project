@@ -11,12 +11,6 @@ const MovieCard = ({ movieData }) => {
           alt={`${movieData.movie_name} movie poster`}
         />
       </div>
-      <Image
-          src={movieData.poster_url}
-          alt={`${movieData.movie_name} movie poster`}
-          width={200}
-          height={300}
-      />
 
       <div className="m-4">
         <span className="font-bold">{movieData.movie_name}</span>

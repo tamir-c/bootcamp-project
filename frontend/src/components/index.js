@@ -7,6 +7,9 @@ import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
 import Footer from "./Navbar/Footer";
 import Header from "./Navbar/Header";
+import Map from "./Maps/Map";
+import Weather from "./Weather/Weather";
+import Travel from "./Travel/Travel";
 
 export {
   Logo,
@@ -18,4 +21,7 @@ export {
   SocialButtons,
   Footer,
   Header,
+  Map,
+  Weather,
+  Travel
 };

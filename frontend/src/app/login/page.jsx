@@ -15,7 +15,7 @@ some very particular cases for data fetching
 import {
   Logo,
   SignUpForm,
-  Header,
+  HeaderTitle,
   SocialButtons,
   TermsOfService,
 } from "@/components";
@@ -53,7 +53,7 @@ const page = () => {
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <Logo />
           <div className="mt-12 flex flex-col items-center">
-            <Header title="Log in to Sky Travel!" />
+            <HeaderTitle title="Log in to Sky Travel!" />
             <div className="w-full flex-1 mt-8">
               <SocialButtons />
 

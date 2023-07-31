@@ -7,6 +7,7 @@ import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
 import Footer from "./Navbar/Footer";
 import Header from "./Navbar/Header";
+import { Provider, useThemeContext } from "./Context/Provider";
 
 export {
   Logo,
@@ -18,4 +19,6 @@ export {
   SocialButtons,
   Footer,
   Header,
+  Provider,
+  useThemeContext,
 };

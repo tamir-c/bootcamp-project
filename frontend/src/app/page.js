@@ -3,8 +3,19 @@
 import MovieCard from "@/components/Cards/MovieCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useThemeContext } from "@/components";
 
 export default function Home() {
+  /**
+   To get the data in any component, we can use the useThemeContext hook.
+
+   In the detaios page, we can call the hook and use a function to to find the right movie.
+
+    const findByID = (id) => {
+    return data.find((item) => item.id === id);
+  };
+   */
+  const { data } = useThemeContext();
   // const BACKEND_URL = "http://127.0.0.1:8082";
   const BACKEND_URL = "http://18.170.108.208:8082";
   const [movies, setMovies] = useState([]);

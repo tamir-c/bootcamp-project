@@ -3,8 +3,10 @@ import SocialButton from "./Buttons/SocialButtons";
 import FormInput from "./Form/FormInput";
 import TermsOfService from "./TermsOfService/TermsOfService";
 import SignUpForm from "./Form/SignUpForm";
-import Header from "./Header/Header";
+import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
+import Footer from "./Navbar/Footer";
+import Header from "./Navbar/Header";
 
 export {
   Logo,
@@ -12,6 +14,8 @@ export {
   FormInput,
   TermsOfService,
   SignUpForm,
-  Header,
+  HeaderTitle,
   SocialButtons,
+  Footer,
+  Header,
 };

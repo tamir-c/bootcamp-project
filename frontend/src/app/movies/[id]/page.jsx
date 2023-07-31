@@ -31,9 +31,9 @@ const page = () => {
     //   src={movieData.poster_url}
     //   alt={`${movieData.movie_name} movie poster`}
     // />
-    <>
-      <div className="grid grid-cols-2 gap-4 m-8">
-        <div className="bg-red-500 rounded-lg shadow-xl row-span-2 h-600 min-h-[50px]">
+    <div className="grid h-screen place-items-center">
+      <div className="items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 m-8">
+        <div className="bg-red-500 place-items-center max-w-[800px] text-justify rounded-lg shadow-xl max-w-100 row-span-2 min-h-[50px]">
           <img
             // style={{
             //   objectFit: "cover",
@@ -44,6 +44,14 @@ const page = () => {
             alt={`${movieData.movie_name} movie poster`}
             className="place-items-center h-auto max-w-full rounded-lg"
           />
+          <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Obcaecati reiciendis ipsum voluptas, itaque, repellendus tempora
+              fuga rem dolorum quasi officia sit maxime corrupti nihil atque
+              error voluptates? Sit, accusantium nulla.
+            </p>
+          </div>
         </div>
         <div className="bg-blue-500 rounded-lg shadow-xl min-h-[50px] p-5 text-center place-items-center">
           <p>Release date: 2013</p>
@@ -51,21 +59,21 @@ const page = () => {
           <p>Genre: Romance</p>
           <p>Duration</p>
         </div>
-        <div className="bg-green-500 rounded-lg shadow-xl min-h-[50px] row-span-2">
+        <div className="bg-green-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[50px] row-span-2">
           <MovieCard />
           <MovieCard />
           <MovieCard />
         </div>
-        <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
+        {/* <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati
             reiciendis ipsum voluptas, itaque, repellendus tempora fuga rem
             dolorum quasi officia sit maxime corrupti nihil atque error
             voluptates? Sit, accusantium nulla.
           </p>
-        </div>
+        </div> */}
       </div>
-    </>
+    </div>
   );
 };
 

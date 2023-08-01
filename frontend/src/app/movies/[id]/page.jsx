@@ -21,6 +21,7 @@ const page = ({ params }) => {
   }, []);
 
   console.log(movieLocations);
+  console.log(movieData);
 
   return (
     <div className="grid place-items-center">

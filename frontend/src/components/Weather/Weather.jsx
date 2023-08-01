@@ -3,14 +3,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { WeatherCard } from "..";
 
-// const Weather = () => {
-//     return <div className="h-10 w-100 border-4 border-solid">
-//         Weather placeholder
-//     </div>
-// }
-
-// export default Weather;
-
 function Weather({ latitude, longitude }) {
   const API_KEY = "c886024dcc204a23e218e3b548d03062";
 

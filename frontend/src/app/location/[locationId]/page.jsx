@@ -36,21 +36,21 @@ export default function page({ params }) {
         <div className="p-5 border-5">{locationData.city_description}</div>
       </div>
       <div className="p-5">
-        {locationData.longitude && locationData.latitude ? (
+        {/* {locationData.longitude && locationData.latitude ? (
           <Map cityCoords={[locationData.longitude, locationData.latitude]} />
         ) : (
           <p>Loading map...</p>
-        )}
+        )} */}
       </div>
-      <div>
+      {/* <div>
       {locationData.longitude && locationData.latitude ? (
           <Weather longitude={locationData.longitude} latitude={locationData.latitude} />
         ) : 
         <p>Loading weather...</p>
       }
-      </div>
-        <Travel />
-        <TravelCard />
+      </div> */}
+      <Travel />
+      <TravelCard />
     </div>
   );
 }

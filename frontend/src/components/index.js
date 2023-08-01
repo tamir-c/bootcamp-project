@@ -11,6 +11,7 @@ import Map from "./Maps/Map";
 import Weather from "./Weather/Weather";
 import Travel from "./Travel/Travel";
 import WeatherCard from "./Weather/WeatherCard";
+import TravelCard from "./Travel/TravelCard";
 
 export {
   Logo,
@@ -25,5 +26,6 @@ export {
   Map,
   Weather,
   Travel,
-  WeatherCard
+  WeatherCard,
+  TravelCard
 };

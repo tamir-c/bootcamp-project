@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Map, Weather, Travel } from "@/components";
+import { Map, Weather, Travel, TravelCard } from "@/components";
 
 export default function page({ params }) {
   const [locationData, setLocationData] = useState({});
@@ -49,10 +49,8 @@ export default function page({ params }) {
         <p>Loading weather...</p>
       }
       </div>
-
-      <div>
         <Travel />
-      </div>
+        <TravelCard />
     </div>
   );
 }

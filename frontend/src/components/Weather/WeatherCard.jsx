@@ -12,10 +12,8 @@ const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
         src={`https://openweathermap.org/img/w/${dayData.weather[0].icon}.png`}
         alt={dayData.weather[0].description}
       />
-      {/* <p>Date/Time: {new Date(dayData.dt * 1000).toLocaleString()}</p> */}
       <p className="whitespace-nowrap text-s">{dayData.temp.max.toFixed(0)} °C</p>
       <p className="whitespace-nowrap text-xs">{dayData.temp.min.toFixed(0)} °C</p>
-      {/* <p>{dayData.weather[0].description}</p> */}
     </li>
   );
 };

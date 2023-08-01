@@ -1,33 +1,28 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import MovieCard from "@/components/Cards/MovieCard";
-import { useThemeContext } from "@/components";
+import Link from "next/link";
+import { fetchMovies } from "@/utils/helpers/fetchMovies";
 
 export default function Home() {
-  const { movies } = useThemeContext();
-  /**
-   To get the data in any component, we can use the useThemeContext hook.
-
-   In the detaios page, we can call the hook and use a function to to find the right movie.
-
-    const findByID = (id) => {
-    return data.find((item) => item.id === id);
-  };
-   */
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchMovies();
+      setMovies(data);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="m-8 grid 2xl:grid-cols-8 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-10 place-items-center">
       {movies?.length > 0 ? (
         movies.map((m) => (
-          <div
-            key={m.movie_id}
-            className="cursor-pointer"
-            onClick={(id = m.movie_id) => {
-              console.log(id);
-            }}
-          >
-            <MovieCard key={m.movie_id} movieData={m} />
-          </div>
+          <Link href={`/movies/${m.movie_id}`}>
+            <div key={m.movie_id} className="cursor-pointer">
+              <MovieCard key={m.movie_id} movieData={m} />
+            </div>
+          </Link>
         ))
       ) : (
         <h1>No Movies Available</h1>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { fetchMovies } from "@/utils/helpers/fetchMovies";
 
 export default function Home() {
+
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -15,7 +16,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="m-8 grid 2xl:grid-cols-8 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-10 place-items-center">
+    <div className="m-8 gap-6 place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
       {movies?.length > 0 ? (
         movies.map((m) => (
           <Link key={m.movie_id} href={`/movies/${m.movie_id}`}>

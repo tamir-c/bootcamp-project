@@ -49,10 +49,7 @@ export default function page({ params }) {
         <p>Loading weather...</p>
       }
       </div>
-
-      <div>
-        <TravelCard />
-      </div>
+        <Travel />
     </div>
   );
 }

@@ -24,9 +24,9 @@ const page = ({ params }) => {
 
   return (
     <div className="grid place-items-center">
+      <h1 className="font-extrabold text-2xl pt-4">{movieData.movie_name}</h1>
       <div className="place-items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 p-4">
-        <h1 className="font-extrabold text-2xl">{movieData.movie_name}</h1>
-        <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg shadow-xl max-w-100 row-span-2 min-h-[50px]">
+        <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg row-span-2 shadow-xl max-w-100 min-h-[50px]">
           <img
             // style={{
             //   objectFit: "cover",
@@ -52,14 +52,17 @@ const page = ({ params }) => {
           </div>
         </div>
 
-        <div className="bg-base-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px] row-span-2">
-          {movieLocations.map((loc) => (
-            <Link href={`/location/${loc.city_id}`}>
-              <div className="cursor-pointer">
-              <LocationCard locationData={loc}/>
-              </div>
-            </Link>
-          ))}
+        <div className="bg-base-300 rounded-lg text-center pt-8">
+          <h1 className="font-bold">Locations</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]">
+            {movieLocations.map((loc) => (
+              <Link href={`/location/${loc.city_id}`}>
+                <div className="cursor-pointer">
+                  <LocationCard locationData={loc} />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

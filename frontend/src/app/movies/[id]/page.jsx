@@ -53,18 +53,24 @@ const page = ({ params }) => {
           </div>
         </div>
 
+        {movieLocations ? 
+          (
         <div className="bg-base-300 rounded-lg text-center pt-8">
           <h1 className="font-bold">Locations</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]">
-            {movieLocations.map((loc) => (
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]">
+            {movieLocations?.map((loc) => (
               <Link href={`/location/${loc.city_id}`}>
                 <div className="cursor-pointer">
                   <LocationCard locationData={loc} />
                 </div>
               </Link>
             ))}
-          </div>
+            </div>
         </div>
+          ) :
+        <p>No movie location data available</p>
+            }
       </div>
     </div>
   );

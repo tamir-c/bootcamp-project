@@ -3,8 +3,8 @@
 const MovieCard = ({ movieData }) => {
   return (
     <div className="relative max-w-xs overflow-hidden rounded-2xl shadow-lg group">
-      <div className="">
-        <img className=""
+      <div>
+        <img
           style={{
             objectFit: "cover",
             width: "300px",

@@ -44,7 +44,7 @@ const page = () => {
             alt={`${movieData.movie_name} movie poster`}
             className="place-items-center h-auto max-w-full rounded-lg"
           />
-          <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
+          <div className="rounded-lg shadow-xl min-h-[50px] p-5">
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Obcaecati reiciendis ipsum voluptas, itaque, repellendus tempora

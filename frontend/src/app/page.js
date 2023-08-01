@@ -18,8 +18,8 @@ export default function Home() {
     <div className="m-8 grid 2xl:grid-cols-8 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-10 place-items-center">
       {movies?.length > 0 ? (
         movies.map((m) => (
-          <Link href={`/movies/${m.movie_id}`}>
-            <div key={m.movie_id} className="cursor-pointer">
+          <Link key={m.movie_id} href={`/movies/${m.movie_id}`}>
+            <div className="cursor-pointer">
               <MovieCard key={m.movie_id} movieData={m} />
             </div>
           </Link>

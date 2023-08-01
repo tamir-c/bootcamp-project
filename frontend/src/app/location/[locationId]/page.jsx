@@ -50,9 +50,8 @@ export default function page({ params }) {
       }
       </div>
 
-      <div>
         <Travel />
-      </div>
+    
     </div>
   );
 }

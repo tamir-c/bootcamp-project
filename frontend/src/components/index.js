@@ -5,7 +5,7 @@ import TermsOfService from "./TermsOfService/TermsOfService";
 import SignUpForm from "./Form/SignUpForm";
 import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
-import Footer from "./Navbar/Footer";
+import Footer from "./Footer/Footer";
 import Header from "./Navbar/Header";
 import { Provider, useThemeContext } from "./Context/Provider";
 

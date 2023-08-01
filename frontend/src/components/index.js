@@ -10,6 +10,7 @@ import Header from "./Navbar/Header";
 import Map from "./Maps/Map";
 import Weather from "./Weather/Weather";
 import Travel from "./Travel/Travel";
+import TravelCard from "./Travel/TravelCard";
 
 export {
   Logo,
@@ -23,5 +24,6 @@ export {
   Header,
   Map,
   Weather,
-  Travel
+  Travel,
+  TravelCard
 };

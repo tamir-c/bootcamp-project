@@ -1,14 +1,24 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { fetchMovie } from "@/utils/helpers/fetchMovies";
+
 import { useParams } from "next/navigation";
 import axios from "axios";
 import MovieCard from "../../../components/Cards/MovieCard";
 
 const page = () => {
+  const page = ({ params }) => {
+    const { id } = params;
+    useEffect(() => {
+      async function fetchData() {
+        const movie = await fetchMovie(id);
+        console.log(movie);
+      }
+      fetchData();
+    }, []);
   const BACKEND_URL = "http://127.0.0.1:8082";
   // const BACKEND_URL = "http://18.170.108.208:8082";
-  const params = useParams();
-  const id = params.id;
 
   const movieData = {
     movie_id: 1,
@@ -84,6 +94,10 @@ page.defaultProps = {
     poster_url: "https://via.placeholder.com/400",
     duration_minutes: "No duration",
   },
+
+
+
+  return <div className="text-center">{id}</div>;
 };
 
 export default page;

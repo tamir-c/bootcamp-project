@@ -5,8 +5,7 @@ import Link from "next/link";
 import { fetchMovies } from "@/utils/helpers/fetchMovies";
 
 export default function Home() {
-  const BACKEND_URL = "http://127.0.0.1:8082";
-  // const BACKEND_URL = "http://18.170.108.208:8082";
+
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {

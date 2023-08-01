@@ -1,7 +1,7 @@
 import axios from "axios";
 export const fetchMovies = async () => {
   try {
-    const { data } = await axios.get("http://localhost:8080/movies");
+    const { data } = await axios.get("http://localhost:8082/movies");
     return data;
   } catch ({ message }) {
     console.warn(message);
@@ -10,7 +10,16 @@ export const fetchMovies = async () => {
 
 export const fetchMovie = async (id) => {
   try {
-    const { data } = await axios.get(`http://localhost:8080/movies/${id}`);
+    const { data } = await axios.get(`http://localhost:8082/movies/${id}`);
+    return data;
+  } catch ({ message }) {
+    console.warn(message);
+  }
+};
+
+export const fetchMovieLocations = async (id) => {
+  try {
+    const { data } = await axios.get(`http://localhost:8082/moviecity/${id}`);
     return data;
   } catch ({ message }) {
     console.warn(message);

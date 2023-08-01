@@ -1,45 +1,32 @@
 "use client";
 import { useState, useEffect } from "react";
-import { fetchMovie } from "@/utils/helpers/fetchMovies";
+import { fetchMovie, fetchMovieLocations } from "@/utils/helpers/fetchMovies";
 
-import MovieCard from "../../../components/Cards/MovieCard";
+import LocationCard from "../../../components/Cards/LocationCard";
+import Link from "next/link";
 
 const page = ({ params }) => {
+  const [movieData, setMovieData] = useState({});
+  const [movieLocations, setMovieLocations] = useState([]);
+
   const { id } = params;
   useEffect(() => {
     async function fetchData() {
       const movie = await fetchMovie(id);
-      console.log(movie);
+      setMovieData(movie);
+      const locations = await fetchMovieLocations(id);
+      setMovieLocations(locations);
     }
     fetchData();
   }, []);
-  const BACKEND_URL = "http://127.0.0.1:8082";
-  // const BACKEND_URL = "http://18.170.108.208:8082";
 
-  const movieData = {
-    movie_id: 1,
-    movie_name: "About Time",
-    description: "A young man discovers he can travel in time.",
-    poster_url:
-      "https://m.media-amazon.com/images/I/815Q1ufP6yL._AC_UF1000,1000_QL80_.jpg",
-    release_year: "2013",
-    director: "Richard Curtis",
-    duration_minutes: 123,
-  };
+  console.log(movieLocations);
 
   return (
-    // <img
-    //   // style={{
-    //   //   objectFit: "cover",
-    //   //   width: "300px",
-    //   //   height: "300px",
-    //   // }}
-    //   src={movieData.poster_url}
-    //   alt={`${movieData.movie_name} movie poster`}
-    // />
     <div className="grid h-screen place-items-center">
-      <div className="items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 m-8">
-        <div className="bg-red-500 place-items-center max-w-[800px] text-justify rounded-lg shadow-xl max-w-100 row-span-2 min-h-[50px]">
+      <div className="place-items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 p-4">
+        <h1 className="font-extrabold text-2xl">{movieData.movie_name}</h1>
+        <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg shadow-xl max-w-100 row-span-2 min-h-[50px]">
           <img
             // style={{
             //   objectFit: "cover",
@@ -48,36 +35,32 @@ const page = ({ params }) => {
             // }}
             src={movieData.poster_url}
             alt={`${movieData.movie_name} movie poster`}
-            className="place-items-center h-auto max-w-full rounded-lg"
+            className="place-items-center rounded-tl-lg rounded-tr-lg h-auto max-w-full"
           />
           <div className="rounded-lg shadow-xl min-h-[50px] p-5">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Obcaecati reiciendis ipsum voluptas, itaque, repellendus tempora
-              fuga rem dolorum quasi officia sit maxime corrupti nihil atque
-              error voluptates? Sit, accusantium nulla.
-            </p>
+            <p>{movieData.description}</p>
           </div>
         </div>
-        <div className="bg-blue-500 rounded-lg shadow-xl min-h-[50px] p-5 text-center place-items-center">
-          <p>Release date: 2013</p>
-          <p>Directed by: Richard Curtis</p>
-          <p>Genre: Romance</p>
-          <p>Duration</p>
+
+        <div className="card w-full bg-base-300 rounded-lg shadow-xl m-4 p-5 text-center place-items-center">
+          <div className="p-4">
+            <h2 className="font-bold">Movie Details</h2>
+            <p className="m-4">Release date: {movieData.release_year}</p>
+            <p className="m-4">Directed by: {movieData.director}</p>
+            <p className="m-4">Genre: {movieData.genre?.genre_name}</p>
+            <p className="m-4">Duration: {movieData.duration_minutes} mins</p>
+          </div>
         </div>
-        <div className="bg-green-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[50px] row-span-2">
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+
+        <div className="bg-base-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px] row-span-2">
+          {movieLocations.map((loc) => (
+            <Link href={`/location/${loc.city_id}`}>
+              <div className="cursor-pointer">
+              <LocationCard locationData={loc}/>
+              </div>
+            </Link>
+          ))}
         </div>
-        {/* <div className="rounded-lg shadow-xl min-h-[50px] p-5 border-4 border-black">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati
-            reiciendis ipsum voluptas, itaque, repellendus tempora fuga rem
-            dolorum quasi officia sit maxime corrupti nihil atque error
-            voluptates? Sit, accusantium nulla.
-          </p>
-        </div> */}
       </div>
     </div>
   );
@@ -89,6 +72,10 @@ page.defaultProps = {
     release_year: "No release year",
     poster_url: "https://via.placeholder.com/400",
     duration_minutes: "No duration",
+    genre: {
+      genre_id: "-1",
+      genre_name: "No genre",
+    },
   },
 };
 

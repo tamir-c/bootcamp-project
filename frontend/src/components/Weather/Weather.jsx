@@ -14,8 +14,6 @@ function Weather({ latitude, longitude }) {
         `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`
       );
       const data = await response.data;
-         console.log(data.daily)
-
       return data.daily;
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -30,15 +28,13 @@ function Weather({ latitude, longitude }) {
   }, []);
 
   return (
-      <ul className="flex overflow-auto p-2 pl-0 m-4">
-        {weatherData ? (
-          weatherData.map((item) => (
-              <WeatherCard dayData={item} key={item.dt}/>
-          ))
-        ) : (
-          <p> Loading...</p>
-        )}
-      </ul>
+    <ul className="flex overflow-auto p-2 pl-0 m-4">
+      {weatherData ? (
+        weatherData.map((item) => <WeatherCard dayData={item} key={item.dt} />)
+      ) : (
+        <p> Loading...</p>
+      )}
+    </ul>
   );
 }
 

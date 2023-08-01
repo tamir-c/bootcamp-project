@@ -49,7 +49,17 @@ export default function page({ params }) {
         <p>Loading weather...</p>
       }
       </div> */}
-      <Travel />
+      {/* <div>
+        {locationData.longitude && locationData.latitude ? (
+          <Travel
+            latitude={locationData.latitude}
+            longitude={locationData.longitude}
+          />
+        ) : (
+          <p>Loading travel info...</p>
+        )}
+      </div> */}
+
       <TravelCard />
     </div>
   );

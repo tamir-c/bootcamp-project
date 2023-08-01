@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
+import formatAirportName from "@/utils/helpers/formatAirportName";
 
-function Travel() {
+function Travel({ latitude, longitude }) {
+  //DATE PICKER for arrival and departure date
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11),
@@ -14,7 +16,34 @@ function Travel() {
     setValue(newValue);
   };
 
-  
+  const [airportData, setAirportData] = useState(null);
+
+  const Amadeus = require("amadeus");
+  const amadeus = new Amadeus({
+    clientId: API_KEY,
+    clientSecret: API_SECRET,
+  });
+
+  const getAirportData = async () => {
+    try {
+      const response = await amadeus.referenceData.locations.airports.get({
+        longitude: longitude,
+        latitude: latitude,
+        radius: 100,
+      });
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.error("Error fetching airport data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      setAirportData(await getAirportData());
+    };
+    getData();
+  }, []);
 
   const [departAirport, setDepartAirport] = useState("");
   const [arriveAirport, setArriveAirport] = useState("");
@@ -23,18 +52,18 @@ function Travel() {
 
   return (
     <div>
-      <div className="py-5 md:px-10 md:py-10 ">
+      <div className="py-5 bg-slate-100 md:px-10 md:py-10 ">
         <section className="mt-5 mb-5 ">
           <div className="mr-3 ml-3 flex flex-col md:flex-row md:items-center">
             <div className="md:w-1/2 md:pr-10">
-              <h2 className=" text-3xl text-black md:text-4xl lg:text-5xl">
+              <h2 className="mb-4 text-3xl text-black md:text-4xl lg:text-5xl">
                 Ready to fly?
               </h2>
               <p className="text-black mb-2 mt-2">Input your flight details</p>
             </div>
             <div className="md:w-1/2">
               <form id="form-container" className="items-center">
-                <div clasName="inline relative w-64">
+                <div className="inline relative w-64">
                   <select
                     onChange={(e) => setDepartAirport(e.target.value)}
                     value={departAirport}
@@ -70,8 +99,20 @@ function Travel() {
                     >
                       Select an arrival airport
                     </option>
-                    <option>Test</option>
-                    <option>Test</option>
+                    {airportData ? (
+                      airportData.map((airport) => {
+                        return (
+                          <option
+                            value={airport.iataCode}
+                            key={airport.iataCode}
+                          >
+                            {formatAirportName(airport.name)}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <option>Loading...</option>
+                    )}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg
@@ -83,6 +124,9 @@ function Travel() {
                     </svg>
                   </div>
                 </div>
+                <p className="mt-4">
+                  Please select arrival and departure dates
+                </p>
                 <Datepicker value={value} onChange={handleValueChange} />
                 <label className="mb-4">Adults:</label>
                 <input

@@ -23,7 +23,7 @@ const page = ({ params }) => {
   console.log(movieLocations);
 
   return (
-    <div className="grid h-screen place-items-center">
+    <div className="grid place-items-center">
       <div className="place-items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 p-4">
         <h1 className="font-extrabold text-2xl">{movieData.movie_name}</h1>
         <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg shadow-xl max-w-100 row-span-2 min-h-[50px]">

@@ -8,15 +8,13 @@ import axios from "axios";
 const ThemeContext = createContext({});
 
 export const Provider = ({ children }) => {
-  const [data, setData] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        setData(data);
+        const { data } = await axios.get("http://localhost:8080/movies");
+        setMovies(data);
       } catch ({ message }) {
         console.warn(message);
       }
@@ -25,7 +23,7 @@ export const Provider = ({ children }) => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ data }}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ movies }}>{children}</ThemeContext.Provider>
   );
 };
 

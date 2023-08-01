@@ -43,7 +43,11 @@ export default function page({ params }) {
         )}
       </div>
       <div>
-        <Weather />
+      {locationData.longitude && locationData.latitude ? (
+          <Weather longitude={locationData.longitude} latitude={locationData.latitude} />
+        ) : 
+        <p>Loading weather...</p>
+      }
       </div>
 
       <div>

@@ -36,7 +36,7 @@ const page = ({ params }) => {
             // }}
             src={movieData.poster_url}
             alt={`${movieData.movie_name} movie poster`}
-            className="place-items-center rounded-tl-lg rounded-tr-lg h-auto max-w-full"
+            className="place-items-center rounded-tl-lg rounded-tr-lg h-auto w-full"
           />
           <div className="rounded-lg shadow-xl min-h-[50px] p-5">
             <p>{movieData.description}</p>

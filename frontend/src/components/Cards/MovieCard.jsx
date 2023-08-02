@@ -16,11 +16,11 @@ const MovieCard = ({ movieData }) => {
       </div>
 
       <div className="m-4">
-        <span className="font-bold">{movieData.movie_name}</span>
-        <span className="block text-grey-500 text-sm">
+        <span className="font-bold line-clamp-1">{movieData.movie_name}</span>
+        <span className="block text-grey-500 text-sm line-clamp-1">
           {movieData.release_year}
         </span>
-        <span className="block text-grey-500 text-sm">{`${movieData.duration_minutes} mins`}</span>
+        <span className="block text-grey-500 text-sm line-clamp-1">{`${movieData.duration_minutes} mins`}</span>
       </div>
     </div>
   );

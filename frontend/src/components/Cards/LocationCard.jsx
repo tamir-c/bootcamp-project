@@ -16,7 +16,7 @@ const LocationCard = ({ locationData }) => {
       </div>
 
       <div className="m-4">
-        <span className="font-bold">{locationData.city_name}</span>
+        <span className="font-bold line-clamp-1">{locationData.city_name}</span>
       </div>
     </div>
   );

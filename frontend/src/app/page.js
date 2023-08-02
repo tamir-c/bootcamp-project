@@ -15,25 +15,23 @@ export default function Home() {
     fetchData();
   }, []);
 
-  return (
-    <div className="m-8 gap-6 place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
-      {movies?.length > 0 ? (
-        movies.map((m) => (
-          <Link key={m.movie_id} href={`/movies/${m.movie_id}`}>
-            <div className="cursor-pointer">
-              <MovieCard key={m.movie_id} movieData={m} />
-            </div>
-          </Link>
-        ))
-      ) : (
-        <h1>No Movies Available</h1>
-      )}
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
-      <MovieCard />
+  if (movies?.length > 0) {
+    return (
+      <div className="m-8 gap-6 place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
+      
+      {movies.map((m) => (
+        <Link key={m.movie_id} href={`/movies/${m.movie_id}`}>
+          <div className="cursor-pointer">
+            <MovieCard key={m.movie_id} movieData={m} />
+          </div>
+        </Link>
+      ))}
+  </div>
+    );
+  } else {return (
+    <div className="text-center p-10">
+      <h1>No Movies Available</h1>
     </div>
-  );
+  );}
+
 }

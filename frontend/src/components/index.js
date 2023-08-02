@@ -5,6 +5,7 @@ import TermsOfService from "./TermsOfService/TermsOfService";
 import SignUpForm from "./Form/SignUpForm";
 import Header from "./Header/Header";
 import SocialButtons from "./Buttons/SocialButtons";
+import Provider from "./Provider/Provider";
 
 export {
   Logo,
@@ -14,4 +15,5 @@ export {
   SignUpForm,
   Header,
   SocialButtons,
+  Provider,
 };

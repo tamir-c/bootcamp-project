@@ -226,9 +226,9 @@ function Travel({ latitude, longitude }) {
                 )}
                 <div>
                   <p className="mt-4">
-                    Please select arrival and departure dates
+                    Please select departure date
                   </p>
-                  <Datepicker value={value} onChange={handleValueChange} />
+                  <Datepicker value={value} onChange={handleValueChange} minDate={new Date()} asSingle={true}/>
                 </div>
                 <div>
                   <label className="mb-4">Adults:</label>
@@ -290,7 +290,7 @@ function Travel({ latitude, longitude }) {
       </div>
       <div>
         {flightOptions ? (
-          <ul>
+          <ul className="flex flex-wrap items-center justify-center">
             {flightOptions.map((flight) => {
               return (
                 <li key={flight.id}>
@@ -300,7 +300,7 @@ function Travel({ latitude, longitude }) {
             })}
           </ul>
         ) : null}
-        {isLoading ? <p>Loading flights...</p> : null}
+        {isLoading ? <p className="text-center p-2">Loading flights...</p> : null}
         {noFlights ? noFlights : null}
       </div>
     </div>

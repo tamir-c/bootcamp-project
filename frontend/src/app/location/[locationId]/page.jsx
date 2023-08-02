@@ -38,11 +38,11 @@ export default function page({ params }) {
             </div>
           </div>
        
-        <div className="bg-base-300 rounded-lg shadow-xl p-5 text-center place-items-center">
-          <div className="flex items-center flex-wrap justify-center">
-            <div className="p-5 border-5">{locationData.city_description}</div>
+        <div className="p-5 text-center">
+          <div className="flex items-center flex-wrap content-evenly">
+            <div className="p-5 border-5 bg-base-300 rounded-lg shadow-xl">{locationData.city_description}</div>
             {locationData.longitude && locationData.latitude ? (
-              <div className="grow">
+              <div className="grow pt-4 mt-4">
               <Weather
                 longitude={locationData.longitude}
                 latitude={locationData.latitude}

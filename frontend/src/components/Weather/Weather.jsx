@@ -28,7 +28,7 @@ function Weather({ latitude, longitude }) {
   }, []);
 
   return (
-    <ul className="flex overflow-auto p-4 m-4 flex">
+    <ul className="flex overflow-auto flex">
       {weatherData ? (
         weatherData.map((item) => <WeatherCard dayData={item} key={item.dt} />)
       ) : (

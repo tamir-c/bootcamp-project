@@ -24,10 +24,10 @@ const page = ({ params }) => {
   console.log(movieData);
 
   return (
-    <div className="grid place-items-center">
-      <h1 className="text-center font-extrabold text-3xl md:text-4xl lg:text-5xl p-4 uppercase">{movieData ? movieData.movie_name : 'No movie name'}</h1>
-      <div className="place-items-center justify-center grid grid-cols-1 lg:grid-cols-2 max-w-[1600px] gap-4 p-4">
-        <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg row-span-2 shadow-xl max-w-100 min-h-[50px]">
+    <div className="grid place-items-center m-4">
+      <h1 className="text-center font-extrabold text-3xl md:text-4xl lg:text-5xl pt-5 pb-7 uppercase">{movieData ? movieData.movie_name : 'No movie name'}</h1>
+      <div className="place-items-start gap-8 justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] ">
+        <div className="bg-base-300 place-items-start max-w-[800px] text-justify rounded-lg row-span-2 shadow-xl max-w-100 min-h-[50px]">
           <img
             src={movieData ? movieData.poster_url : 'https://via.placeholder.com/400'}
             alt={`${movieData?.movie_name} movie poster`}
@@ -38,7 +38,7 @@ const page = ({ params }) => {
           </div>
         </div>
 
-        <div className="card w-full bg-base-300 rounded-lg shadow-xl m-4 p-5 text-center place-items-center">
+        <div className="card w-full bg-base-300 rounded-lg shadow-xl text-center place-items-center">
           <div className="p-4 text-xl">
             <h2 className="font-bold text-3xl">Movie Details</h2>
             <p className="m-4">Release date: {movieData?.release_year}</p>

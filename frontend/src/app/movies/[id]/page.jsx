@@ -25,7 +25,7 @@ const page = ({ params }) => {
 
   return (
     <div className="grid place-items-center">
-      <h1 className="font-extrabold text-2xl pt-4">{movieData ? movieData.movie_name : 'No movie name'}</h1>
+      <h1 className="text-center font-extrabold text-2xl pt-4">{movieData ? movieData.movie_name : 'No movie name'}</h1>
       <div className="place-items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 p-4">
         <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg row-span-2 shadow-xl max-w-100 min-h-[50px]">
           <img

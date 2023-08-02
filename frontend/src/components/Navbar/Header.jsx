@@ -25,6 +25,7 @@ function Header() {
       <div className="flex-1">
         <Link href='/' className="btn btn-ghost normal-case text-xl">
           <Image src={sky} alt="Sky Logo" width={50} />
+          <p className="text-slate-500 drop-shadow-xl">Travel</p>
         </Link>
       </div>
       <div className="flex-none">

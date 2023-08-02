@@ -38,7 +38,7 @@ const page = ({ params }) => {
           </div>
         </div>
 
-        <div className="card w-full bg-base-300 rounded-lg shadow-xl text-center place-items-center">
+        <div className="w-full grid place-items-center h-full bg-base-300 rounded-lg shadow-xl text-center">
           <div className="p-4 text-xl">
             <h2 className="font-bold text-3xl">Movie Details</h2>
             <p className="m-4">Release date: {movieData?.release_year}</p>
@@ -50,10 +50,10 @@ const page = ({ params }) => {
 
         {movieLocations ? 
           (
-        <div className="bg-base-300 rounded-lg text-center pt-8 w-full">
+        <div className="bg-base-300 rounded-lg text-center shadow-xl pt-8 h-full w-full">
           <h1 className="font-bold text-3xl mb-3">Locations</h1>
           
-          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 ${movieLocations?.length % 2 == 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 ${movieLocations?.length % 2 == 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} place-items-center p-5 gap-5 rounded-lg min-h-[500px]`}>
             {movieLocations?.map((loc) => (
               <Link href={`/location/${loc.city_id}`}>
                 <div className="cursor-pointer rounded-2xl hover:shadow-2xl">

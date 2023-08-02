@@ -26,7 +26,7 @@ export default function page({ params }) {
   return (
     <div className="">
       <div className="text-center bg-eee border-1 px-5 py-5">
-        <h1 className="text-3xl font-bold">{locationData.city_name}</h1>
+        <h1 className="text-center font-extrabold text-3xl md:text-4xl lg:text-5xl p-4 uppercase">{locationData.city_name}</h1>
       </div>
       <div className="md:m-4"> 
       <div className="lg:grid lg:grid-cols-2 p-4">

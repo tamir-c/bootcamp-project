@@ -7,7 +7,8 @@ import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
 import Footer from "./Footer/Footer";
 import Header from "./Navbar/Header";
-import { Provider, useThemeContext } from "./Context/Provider";
+// import { Provider, useThemeContext } from "./Context/Provider";
+import Provider from "./Provider/Provider";
 
 export {
   Logo,
@@ -20,5 +21,4 @@ export {
   Provider,
   Footer,
   Header,
-  useThemeContext,
 };

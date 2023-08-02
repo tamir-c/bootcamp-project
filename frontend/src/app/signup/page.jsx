@@ -11,6 +11,8 @@ some very particular cases for data fetching
 */
 "use client";
 
+import { useEffect, useState } from "react";
+
 // Import Components:
 import {
   Logo,

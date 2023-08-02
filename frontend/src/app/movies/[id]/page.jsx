@@ -56,7 +56,7 @@ const page = ({ params }) => {
           <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 ${movieLocations?.length % 2 == 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]`}>
             {movieLocations?.map((loc) => (
               <Link href={`/location/${loc.city_id}`}>
-                <div className="cursor-pointer hover:shadow-2xl">
+                <div className="cursor-pointer rounded-2xl hover:shadow-2xl">
                   <LocationCard locationData={loc} />
                 </div>
               </Link>

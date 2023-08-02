@@ -3,9 +3,11 @@ import SocialButton from "./Buttons/SocialButtons";
 import FormInput from "./Form/FormInput";
 import TermsOfService from "./TermsOfService/TermsOfService";
 import SignUpForm from "./Form/SignUpForm";
-import Header from "./Header/Header";
+import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
-import Provider from "./Provider/Provider";
+import Footer from "./Footer/Footer";
+import Header from "./Navbar/Header";
+import { Provider, useThemeContext } from "./Context/Provider";
 
 export {
   Logo,
@@ -13,7 +15,11 @@ export {
   FormInput,
   TermsOfService,
   SignUpForm,
-  Header,
+  HeaderTitle,
   SocialButtons,
   Provider,
+  Footer,
+  Header,
+  Provider,
+  useThemeContext,
 };

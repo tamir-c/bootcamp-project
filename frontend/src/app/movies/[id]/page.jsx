@@ -33,7 +33,7 @@ const page = ({ params }) => {
             alt={`${movieData?.movie_name} movie poster`}
             className="place-items-center rounded-tl-lg rounded-tr-lg h-auto w-full"
           />
-          <div className="rounded-lg shadow-xl min-h-[50px] p-5">
+          <div className="rounded-lg min-h-[50px] p-5">
             <p>{movieData ? movieData.description : 'No description'}</p>
           </div>
         </div>

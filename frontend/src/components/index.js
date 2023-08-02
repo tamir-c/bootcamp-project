@@ -20,6 +20,5 @@ export {
   Provider,
   Footer,
   Header,
-  Provider,
   useThemeContext,
 };

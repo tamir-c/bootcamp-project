@@ -139,7 +139,7 @@ function Travel({ latitude, longitude }) {
 
   return (
     <div>
-      <div className="py-5 bg-slate-100 md:px-10 md:py-10 ">
+      <div className="py-5 bg-base-200 md:px-10 md:py-10 ">
         <section className="mt-5 mb-5 ">
           <div className="mr-3 ml-3 flex flex-col md:flex-row md:items-center">
             <div className="md:w-1/2 md:pr-10">
@@ -226,9 +226,9 @@ function Travel({ latitude, longitude }) {
                 )}
                 <div>
                   <p className="mt-4">
-                    Please select arrival and departure dates
+                    Please select departure date
                   </p>
-                  <Datepicker value={value} onChange={handleValueChange} />
+                  <Datepicker value={value} onChange={handleValueChange} minDate={new Date()} asSingle={true}/>
                 </div>
                 <div>
                   <label className="mb-4">Adults:</label>
@@ -290,7 +290,7 @@ function Travel({ latitude, longitude }) {
       </div>
       <div>
         {flightOptions ? (
-          <ul>
+          <ul className="flex flex-wrap items-center justify-center">
             {flightOptions.map((flight) => {
               return (
                 <li key={flight.id}>
@@ -300,7 +300,7 @@ function Travel({ latitude, longitude }) {
             })}
           </ul>
         ) : null}
-        {isLoading ? <p>Loading flights...</p> : null}
+        {isLoading ? <p className="text-center p-2">Loading flights...</p> : null}
         {noFlights ? noFlights : null}
       </div>
     </div>

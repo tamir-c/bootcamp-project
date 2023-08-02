@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Map, Weather, Travel, TravelCard } from "@/components";
+import { Map, Weather, Travel } from "@/components";
 
 export default function page({ params }) {
   const [locationData, setLocationData] = useState({});
@@ -24,31 +24,39 @@ export default function page({ params }) {
   }, []);
 
   return (
-    <div>
-      <div className="text-center bg-eee border-1 px-10 py-5">
-        <h1 className="text-2xl font-bold">{locationData.city_name}</h1>
+    <div className="">
+      <div className="text-center bg-eee border-1 px-5 py-5">
+        <h1 className="text-center font-extrabold text-3xl md:text-4xl lg:text-5xl p-4 uppercase">{locationData.city_name}</h1>
       </div>
-      {/* location image */}
-      <div className="w-full">
-        <div className="relative w-full">
-          <img src={locationData.city_url} className="w-full" />
+      <div className="md:m-4"> 
+      <div className="lg:grid lg:grid-cols-2 p-4">
+        
+          {/* location image */}
+          <div className="justify-center w-full p-5">
+            <div className="relative shadow-xl">
+              <img src={locationData.city_url} className="rounded w-full" />
+            </div>
+          </div>
+       
+        <div className="p-5 text-center">
+          <div className="flex items-center flex-wrap content-evenly">
+            <div className="p-5 border-5 bg-base-300 rounded-lg shadow-xl">{locationData.city_description}</div>
+            {locationData.longitude && locationData.latitude ? (
+              <div className="grow pt-4 mt-4">
+              <Weather
+                longitude={locationData.longitude}
+                latitude={locationData.latitude}
+              />
+              </div>
+            ) : (
+              <p>Loading weather...</p>
+            )}
+          </div>
         </div>
-        <div className="p-5 border-5">{locationData.city_description}</div>
       </div>
-      <div className="p-5">
-        {locationData.longitude && locationData.latitude ? (
-          <Map cityCoords={[locationData.longitude, locationData.latitude]} />
-        ) : (
-          <p>Loading map...</p>
-        )}
+
       </div>
-      <div>
-      {locationData.longitude && locationData.latitude ? (
-          <Weather longitude={locationData.longitude} latitude={locationData.latitude} />
-        ) : 
-        <p>Loading weather...</p>
-      }
-      </div>
+      
       <div>
         {locationData.longitude && locationData.latitude ? (
           <Travel
@@ -59,6 +67,17 @@ export default function page({ params }) {
           <p>Loading travel info...</p>
         )}
       </div>
+      <div className="md:p-2"> 
+
+         <div className="h-96">
+        {locationData.longitude && locationData.latitude ? (
+          <Map cityCoords={[locationData.longitude, locationData.latitude]} />
+        ) : (
+          <p>Loading map...</p>
+        )}
+      </div>
+      </div>
+     
     </div>
   );
 }

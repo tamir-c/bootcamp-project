@@ -139,7 +139,7 @@ function Travel({ latitude, longitude }) {
 
   return (
     <div>
-      <div className="py-5 bg-slate-100 md:px-10 md:py-10 ">
+      <div className="py-5 bg-base-200 md:px-10 md:py-10 ">
         <section className="mt-5 mb-5 ">
           <div className="mr-3 ml-3 flex flex-col md:flex-row md:items-center">
             <div className="md:w-1/2 md:pr-10">

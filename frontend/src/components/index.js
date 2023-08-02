@@ -7,7 +7,7 @@ import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import SocialButtons from "./Buttons/SocialButtons";
 import Footer from "./Footer/Footer";
 import Header from "./Navbar/Header";
-// import { Provider, useThemeContext } from "./Context/Provider";
+import { ContextProvider, useThemeContext } from "./Context/ContextProvider";
 import Provider from "./Provider/Provider";
 
 export {
@@ -21,4 +21,6 @@ export {
   Provider,
   Footer,
   Header,
+  ContextProvider,
+  useThemeContext,
 };

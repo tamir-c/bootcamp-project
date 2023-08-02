@@ -20,9 +20,9 @@ function Header() {
       style={{ borderBottom: "1px solid #E0E7FF" }}
     >
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">
+        <Link href='/' className="btn btn-ghost normal-case text-xl">
           <Image src={sky} alt="Sky Logo" width={50} />
-        </a>
+        </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">

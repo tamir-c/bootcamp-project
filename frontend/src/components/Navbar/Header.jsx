@@ -1,12 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 import sky from "../../../public/assets/sky.png";
 import Image from "next/image";
-import Link from "next/link";
 
 function Header() {
   const isProfile = false;
   const [showDropdown, setShowDropdown] = useState(false);
+  const { data } = useSession();
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -25,20 +27,36 @@ function Header() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <nav className="hidden md:flex items-center space-x-4">
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            {isProfile && (
-              <li>
-                <Link href="/profile">Profile</Link>
-              </li>
+            {data?.user ? (
+              <>
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+
+                <li>
+                  <button onClick={() => signOut()}>Log out</button>
+                </li>
+                <li>
+                  <Link href="/profile">
+                    <Image
+                      className="rounded-full"
+                      src={data?.user?.image}
+                      width={50}
+                      height={50}
+                    />
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href="/login">Login</Link>
+                </li>
+                <li>
+                  <Link href="/signup">Signup</Link>
+                </li>
+              </>
             )}
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
-            <li>
-              <Link href="/signup">Signup</Link>
-            </li>
           </nav>
 
           <nav className="md:hidden mt-0 md:mt-0">
@@ -65,18 +83,36 @@ function Header() {
               {showDropdown && (
                 <div className="absolute right-0 mt-2 z-[1] p-2 shadow bg-base-100 rounded-box w-52 max-h-40 overflow-y-auto">
                   <ul className="menu menu-sm dropdown-content">
-                    <li>
-                      <a>Home</a>
-                    </li>
-                    <li>
-                      <a>Profile</a>
-                    </li>
-                    <li>
-                      <a>Login</a>
-                    </li>
-                    <li>
-                      <a>Signup</a>
-                    </li>
+                    {data?.user ? (
+                      <>
+                        <li>
+                          <Link href="/">Home</Link>
+                        </li>
+
+                        <li>
+                          <button onClick={() => signOut()}>Log out</button>
+                        </li>
+                        <li>
+                          <Link href="/profile">
+                            <Image
+                              className="rounded-full"
+                              src={data?.user?.image}
+                              width={50}
+                              height={50}
+                            />
+                          </Link>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          <Link href="/login">Login</Link>
+                        </li>
+                        <li>
+                          <Link href="/signup">Signup</Link>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
               )}

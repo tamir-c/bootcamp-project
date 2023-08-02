@@ -18,15 +18,21 @@ import {
   HeaderTitle,
   SocialButtons,
   TermsOfService,
+  useThemeContext,
 } from "@/components";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";
 import validateForm from "@/utils/helpers/validateForm";
+import axios from "axios";
 
 // THIS IS THE LOG IN PAGE
 const page = () => {
+  const router = useRouter();
+  const { setName } = useThemeContext();
+
   // Custom hook called with initial state values
   const {
     formData,
@@ -42,9 +48,24 @@ const page = () => {
 
   // Validate form
   const errors = validateForm(formData);
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("handleLogin");
+    try {
+      const response = await axios.post(
+        "http://18.170.108.208:8082/users/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
+      if (response.status === 202) {
+        router.push("/");
+      }
+      setName(response.data.display_name);
+      return response.data;
+    } catch ({ message }) {
+      console.warn("Error: ", message);
+    }
   };
 
   return (
@@ -59,7 +80,7 @@ const page = () => {
 
               <div className="my-12 border-b text-center">
                 <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                  Or sign up with e-mail
+                  Or login up with e-mail
                 </div>
               </div>
 

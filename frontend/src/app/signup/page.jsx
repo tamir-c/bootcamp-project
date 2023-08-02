@@ -10,6 +10,7 @@ when you want to use localStorage in your components
 some very particular cases for data fetching
 */
 "use client";
+import axios from "axios";
 
 import { useEffect, useState } from "react";
 
@@ -22,6 +23,7 @@ import {
   TermsOfService,
 } from "@/components";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // Import: Dependencies
 import useForm from "@/utils/customHooks/useForm";
@@ -29,6 +31,7 @@ import validateForm from "@/utils/helpers/validateForm";
 
 // THIS IS THE SIGN UP PAGE
 const page = () => {
+  const router = useRouter();
   // Custom hook called with initial state values
   const {
     formData,
@@ -44,11 +47,30 @@ const page = () => {
 
   // Validate form
   const errors = validateForm(formData);
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log("handleSignup");
+    try {
+      const response = await axios.post(
+        "http://18.170.108.208:8082/users/register",
+        {
+          display_name: formData.name,
+          password: formData.password,
+          email: formData.email,
+        }
+      );
+      if (response.status === 201) {
+        router.push("/login");
+      }
+      return response.data;
+    } catch ({ message }) {
+      console.error(error);
+    }
   };
 
+  /*
+
+
+*/
   return (
     <>
       <div className="bg-white shadow sm:rounded-lg flex justify-center flex-1 m-10">

@@ -4,16 +4,17 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import sky from "../../../public/assets/sky.png";
 import Image from "next/image";
+import { useThemeContext } from "@/components";
 
 function Header() {
-  const isProfile = false;
+  const { name } = useThemeContext();
   const [showDropdown, setShowDropdown] = useState(false);
   const { data } = useSession();
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
+  console.log("The name from the hook", name);
   return (
     <div
       className="navbar bg-base-100"
@@ -46,6 +47,16 @@ function Header() {
                     />
                   </Link>
                 </li>
+              </>
+            ) : name ? (
+              <>
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <button onClick={() => signOut()}>Log out</button>
+                </li>
+                <li>Hello {name}</li>
               </>
             ) : (
               <>

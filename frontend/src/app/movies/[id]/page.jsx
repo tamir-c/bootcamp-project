@@ -25,8 +25,8 @@ const page = ({ params }) => {
 
   return (
     <div className="grid place-items-center">
-      <h1 className="text-center font-extrabold text-2xl pt-4">{movieData ? movieData.movie_name : 'No movie name'}</h1>
-      <div className="place-items-center justify-center grid grid-cols-1 md:grid-cols-2 max-w-[1600px] gap-4 p-4">
+      <h1 className="text-center font-extrabold text-3xl md:text-4xl lg:text-5xl p-4 uppercase">{movieData ? movieData.movie_name : 'No movie name'}</h1>
+      <div className="place-items-center justify-center grid grid-cols-1 lg:grid-cols-2 max-w-[1600px] gap-4 p-4">
         <div className="bg-base-300 place-items-center max-w-[800px] text-justify rounded-lg row-span-2 shadow-xl max-w-100 min-h-[50px]">
           <img
             src={movieData ? movieData.poster_url : 'https://via.placeholder.com/400'}
@@ -39,8 +39,8 @@ const page = ({ params }) => {
         </div>
 
         <div className="card w-full bg-base-300 rounded-lg shadow-xl m-4 p-5 text-center place-items-center">
-          <div className="p-4">
-            <h2 className="font-bold">Movie Details</h2>
+          <div className="p-4 text-xl">
+            <h2 className="font-bold text-3xl">Movie Details</h2>
             <p className="m-4">Release date: {movieData?.release_year}</p>
             <p className="m-4">Directed by: {movieData?.director}</p>
             <p className="m-4">Genre: {movieData?.genre?.genre_name}</p>
@@ -50,10 +50,10 @@ const page = ({ params }) => {
 
         {movieLocations ? 
           (
-        <div className="bg-base-300 rounded-lg text-center pt-8">
-          <h1 className="font-bold">Locations</h1>
+        <div className="bg-base-300 rounded-lg text-center pt-8 w-full">
+          <h1 className="font-bold text-3xl mb-3">Locations</h1>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]">
+          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 ${movieLocations?.length % 2 == 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} place-items-center p-5 gap-5 rounded-lg shadow-xl min-h-[500px]`}>
             {movieLocations?.map((loc) => (
               <Link href={`/location/${loc.city_id}`}>
                 <div className="cursor-pointer hover:shadow-2xl">

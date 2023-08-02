@@ -29,7 +29,7 @@ export default function Home() {
   </div>
     );
   } else {return (
-    <div className="text-center">
+    <div className="text-center p-10">
       <h1>No Movies Available</h1>
     </div>
   );}

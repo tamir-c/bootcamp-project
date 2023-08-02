@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import sky from "../../../public/assets/sky.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function Header() {
+  const isProfile = false;
   const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
@@ -24,16 +26,18 @@ function Header() {
         <ul className="menu menu-horizontal px-1">
           <nav className="hidden md:flex items-center space-x-4">
             <li>
-              <a>Home</a>
+              <Link href="/">Home</Link>
+            </li>
+            {isProfile && (
+              <li>
+                <Link href="/profile">Profile</Link>
+              </li>
+            )}
+            <li>
+              <Link href="/login">Login</Link>
             </li>
             <li>
-              <a>Profile</a>
-            </li>
-            <li>
-              <a>Login</a>
-            </li>
-            <li>
-              <a>Signup</a>
+              <Link href="/signup">Signup</Link>
             </li>
           </nav>
 

@@ -21,7 +21,7 @@ export default function Home() {
       
       {movies.map((m) => (
         <Link key={m.movie_id} href={`/movies/${m.movie_id}`}>
-          <div className="cursor-pointer">
+          <div className="cursor-pointer hover:shadow-2xl">
             <MovieCard key={m.movie_id} movieData={m} />
           </div>
         </Link>

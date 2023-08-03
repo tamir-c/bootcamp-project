@@ -290,7 +290,7 @@ function Travel({ latitude, longitude }) {
       </div>
       <div>
         {flightOptions ? (
-          <ul className="flex flex-wrap items-center justify-center">
+          <ul className="flex flex-wrap items-center justify-center p-4 m-4">
             {flightOptions.map((flight) => {
               return (
                 <li key={flight.id}>

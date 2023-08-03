@@ -42,7 +42,7 @@ export default function page({ params }) {
           <div className="flex items-center flex-wrap content-evenly">
             <div className="p-5 border-5 bg-base-300 rounded-lg shadow-xl">{locationData.city_description}</div>
             {locationData.longitude && locationData.latitude ? (
-              <div className="grow pt-4 mt-4">
+              <div className="grow pt-4 mt-4 w-full">
               <Weather
                 longitude={locationData.longitude}
                 latitude={locationData.latitude}
@@ -67,7 +67,7 @@ export default function page({ params }) {
           <p>Loading travel info...</p>
         )}
       </div>
-      <div className="md:p-2"> 
+      <div className="md:p-2 sm:p-4"> 
 
          <div className="h-96">
         {locationData.longitude && locationData.latitude ? (

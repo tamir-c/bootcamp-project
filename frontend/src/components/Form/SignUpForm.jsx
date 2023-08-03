@@ -10,6 +10,9 @@ const SignUpForm = ({
   warnings,
   signup,
   handleSubmit,
+  emailError,
+  isClicked,
+  loginError,
 }) => {
   const { name, email, password } = formData;
 
@@ -27,6 +30,8 @@ const SignUpForm = ({
             onChange={handleInputChange}
             errorMessage={errors.name?.length > 0 ? errors.name[0] : null}
             warnings={warnings.name}
+            isClicked={isClicked}
+            loginError={loginError}
           />
         )}
 
@@ -40,6 +45,8 @@ const SignUpForm = ({
           onChange={handleInputChange}
           errorMessage={errors.email?.length > 0 ? errors.email[0] : null}
           warnings={warnings.email}
+          isClicked={isClicked}
+          emailError={emailError}
         />
 
         <FormInput

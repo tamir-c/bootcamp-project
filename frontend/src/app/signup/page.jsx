@@ -31,6 +31,8 @@ import validateForm from "@/utils/helpers/validateForm";
 
 // THIS IS THE SIGN UP PAGE
 const page = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const [emailError, setEmailError] = useState("");
   const router = useRouter();
   // Custom hook called with initial state values
   const {
@@ -49,6 +51,7 @@ const page = () => {
   const errors = validateForm(formData);
   const handleSignup = async (e) => {
     e.preventDefault();
+    setIsClicked(true);
     try {
       const response = await axios.post(
         "http://18.170.108.208:8082/users/register",
@@ -62,8 +65,14 @@ const page = () => {
         router.push("/login");
       }
       return response.data;
-    } catch ({ message }) {
-      console.error(error);
+    } catch (error) {
+      console.log(error.response.data.message);
+      setEmailError(error.response.data.message);
+
+      setTimeout(() => {
+        setEmailError("");
+        setIsClicked(false);
+      }, 3000);
     }
   };
 
@@ -88,6 +97,8 @@ const page = () => {
               </div>
 
               <SignUpForm
+                isClicked={isClicked}
+                emailError={emailError}
                 formData={formData}
                 handleInputChange={handleInputChange}
                 handleWarningOnFocus={handleWarningOnFocus}

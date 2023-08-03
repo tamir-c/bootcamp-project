@@ -8,6 +8,9 @@ const FormInput = ({
   onChange,
   errorMessage,
   warnings,
+  isClicked,
+  emailError,
+  loginError,
 }) => {
   return (
     <>
@@ -21,6 +24,13 @@ const FormInput = ({
         onBlur={onBlur}
         onChange={onChange}
       />
+      {isClicked && (
+        <small className="text-sm text-red-500">{loginError}</small>
+      )}
+      {isClicked && (
+        <small className="text-sm text-red-500">{emailError}</small>
+      )}
+
       {warnings && errorMessage && (
         <small className="text-sm text-red-500">{errorMessage}</small>
       )}

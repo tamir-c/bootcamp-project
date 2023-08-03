@@ -19,7 +19,7 @@ export default function Home() {
   if (movies?.length > 0) {
     return (
       <>
-      <div className="object-cover">
+        <div className="object-cover">
           <DefaultCarousel />
         </div>
         <div className="text-center mr-2 ml-2 mt-4">
@@ -28,12 +28,6 @@ export default function Home() {
             title={"Select a movie to view its filming locations..."}
           />
         </div>
-        {/* <img
-                src="https://static.hbo.com/2022-06/house-of-the-dragon-ka-1920.jpg"
-                className="w-full"
-              /> */}
-
-      
 
         <div className="m-8 gap-6 place-items-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           {movies.map((m) => (
@@ -44,8 +38,6 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        
-        
       </>
     );
   } else {

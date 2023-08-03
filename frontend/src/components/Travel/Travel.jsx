@@ -154,11 +154,12 @@ function Travel({ latitude, longitude }) {
                 className="items-center"
                 onSubmit={handleSubmit}
               >
+                <div className="mb-4">
                 <div className="inline relative w-64">
                   <select
                     onChange={(e) => setDepartAirport(e.target.value)}
                     value={departAirport}
-                    className="block mb-4 appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                   >
                     <option value="">Select a departure airport</option>
                     <option value="LHR">London Heathrow Airport</option>
@@ -184,8 +185,10 @@ function Travel({ latitude, longitude }) {
                   </div>
                 </div>
                 {departAirportError && (
-                  <p className="text-red-500">{departAirportError}</p>
+                  <p className="text-red-500 mt-1">{departAirportError}</p>
                 )}
+                </div>
+                <div>
                 <div className="inline relative w-64 mb-4 mt-4">
                   <select
                     className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -222,15 +225,16 @@ function Travel({ latitude, longitude }) {
                   </div>
                 </div>
                 {arriveAirportError && (
-                  <p className="text-red-500">{arriveAirportError}</p>
+                  <p className="text-red-500 mt-1">{arriveAirportError}</p>
                 )}
-                <div>
+                </div>
+                <div className="mb-4">
                   <p className="mt-4">
                     Please select departure date
                   </p>
                   <Datepicker value={value} onChange={handleValueChange} minDate={new Date()} asSingle={true}/>
                 </div>
-                <div>
+                <div className="mb-4">
                   <label className="mb-4">Adults:</label>
                   <input
                     id="adult"
@@ -241,11 +245,11 @@ function Travel({ latitude, longitude }) {
                     max={9 - noChildren}
                     step={1}
                     type="number"
-                    className="w-full border py-2 px-2 mb-5 bg-transparent "
+                    className="w-full border py-2 px-2 bg-transparent "
                   ></input>
-                </div>
                 {/* No of adults validation */}
-                {noAdultError && <p className="text-red-500">{noAdultError}</p>}
+                {noAdultError && <p className="text-red-500 mt-1">{noAdultError}</p>}
+                </div>
                 <div>
                   <label className="mb-4">Children (0-11):</label>
                   <input
@@ -290,7 +294,7 @@ function Travel({ latitude, longitude }) {
       </div>
       <div>
         {flightOptions ? (
-          <ul className="flex flex-wrap items-center justify-center p-4 m-4">
+          <ul className="flex flex-wrap items-center justify-center pt-4 mt-4">
             {flightOptions.map((flight) => {
               return (
                 <li key={flight.id}>

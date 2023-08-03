@@ -67,7 +67,7 @@ export default function page({ params }) {
           <p>Loading travel info...</p>
         )}
       </div>
-      <div className="md:p-2"> 
+      <div className="md:p-2 sm:p-4"> 
 
          <div className="h-96">
         {locationData.longitude && locationData.latitude ? (

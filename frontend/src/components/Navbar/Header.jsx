@@ -6,8 +6,6 @@ import sky from "../../../public/assets/sky.png";
 import Image from "next/image";
 import { useThemeContext } from "@/components";
 
-
-
 function Header() {
   const { name } = useThemeContext();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -16,14 +14,13 @@ function Header() {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-  console.log("The name from the hook", name);
   return (
     <div
       className="navbar bg-base-100"
       style={{ borderBottom: "1px solid #E0E7FF" }}
     >
       <div className="flex-1">
-        <Link href='/' className="btn btn-ghost normal-case text-xl">
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
           <Image src={sky} alt="Sky Logo" width={50} />
         </Link>
       </div>
@@ -58,7 +55,7 @@ function Header() {
                 <li>
                   <button onClick={() => signOut()}>Log out</button>
                 </li>
-                <li>Hello {name}</li>
+                <li>{name}</li>
               </>
             ) : (
               <>
